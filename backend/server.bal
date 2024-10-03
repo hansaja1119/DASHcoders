@@ -1,16 +1,17 @@
 import ballerina/http;
-import ballerina/sql;
 
-@http:ServiceConfig {
-    cors: {
-        allowOrigins: ["http://localhost:3000"],
-        allowMethods: ["GET", "POST", "OPTIONS"]
-    }
-}
+// import ballerina/sql;
 
-service /predict on new http:Listener(9090) {
+// @http:ServiceConfig {
+//     cors: {
+//         allowOrigins: ["http://localhost:3000"],
+//         allowMethods: ["GET", "POST", "OPTIONS"]
+//     }
+// }
 
-    isolated resource function get cargos/[string cargoId]/orders() returns Order[]|error {
-        return selectOrdersByCargoId(cargoId);
+service /api on new http:Listener(9090) {
+
+    isolated resource function get medicines/[string Disease]() returns Disease_medicationedication[]|error {
+        return selectMedicine(Disease);
     };
 }

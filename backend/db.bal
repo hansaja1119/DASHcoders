@@ -17,14 +17,14 @@ final mysql:Client dbClient = check new (
     options = connectionOptions
 );
 
-isolated function selectOrder(string id) returns Order|sql:Error {
-    sql:ParameterizedQuery selectQuery = `SELECT * FROM Orders WHERE id = ${id}`;
-    return dbClient->queryRow(selectQuery);
-}
+// isolated function selectMedicine(string diease) returns Disease_medicationedication|sql:Error {
+//     sql:ParameterizedQuery selectQuery = `SELECT Medication FROM disease_medication WHERE Disease = ${diease}`;
+//     return dbClient->queryRow(selectQuery);
+// }
 
-isolated function selectOrdersByCargoId(string cargoId) returns Order[]|error {
-    sql:ParameterizedQuery selectQuery = `SELECT * FROM Orders WHERE cargoId = ${cargoId} order by quantity desc`;
-    stream<Order, error?> orderStream = dbClient->query(selectQuery);
-    return from Order ord in orderStream
-        select ord;
+isolated function selectMedicine(string diease) returns Disease_medicationedication[]|error {
+    sql:ParameterizedQuery selectQuery = `SELECT Medication FROM Disease_medication WHERE Disease = ${diease} `;
+    stream<Disease_medicationedication, error?> medicationStream = dbClient->query(selectQuery);
+    return from Disease_medicationedication med in medicationStream
+        select med;
 }
