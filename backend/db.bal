@@ -17,14 +17,21 @@ final mysql:Client dbClient = check new (
     options = connectionOptions
 );
 
-// isolated function selectMedicine(string diease) returns Disease_medicationedication|sql:Error {
-//     sql:ParameterizedQuery selectQuery = `SELECT Medication FROM disease_medication WHERE Disease = ${diease}`;
-//     return dbClient->queryRow(selectQuery);
-// }
+isolated function selectDiseaseDescription(string diease) returns Disease_description|sql:Error {
+    sql:ParameterizedQuery selectQuery = `SELECT * FROM disease_description WHERE Disease = ${diease}`;
+    return dbClient->queryRow(selectQuery);
+}
 
-isolated function selectMedicine(string diease) returns Disease_medicationedication[]|error {
-    sql:ParameterizedQuery selectQuery = `SELECT Medication FROM Disease_medication WHERE Disease = ${diease} `;
-    stream<Disease_medicationedication, error?> medicationStream = dbClient->query(selectQuery);
-    return from Disease_medicationedication med in medicationStream
+isolated function selectMedicine(string diease) returns Disease_medication[]|error {
+    sql:ParameterizedQuery selectQuery = `SELECT Disease, Medication FROM Disease_medication WHERE Disease = ${diease} `;
+    stream<Disease_medication, error?> medicationStream = dbClient->query(selectQuery);
+    return from Disease_medication med in medicationStream
+        select med;
+}
+
+isolated function selectWorkouts(string diease) returns Workout[]|error {
+    sql:ParameterizedQuery selectQuery = `SELECT * FROM workout WHERE Disease = ${diease}`;
+    stream<Workout, error?> workoutStream = dbClient->query(selectQuery);
+    return from Workout med in workoutStream
         select med;
 }
