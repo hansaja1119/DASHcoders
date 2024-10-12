@@ -22,9 +22,9 @@ const LandingPage = () => {
           <p>91% Plan Match for BloomTech</p>
         </div>
       </div>
-      <h1>Explore Modern Health Plans with AI Solutions</h1>
-      <p>Use AI to find and manage the best health coverage for your business needs and budget.</p>
-      <button className="cta-button">Activate Your Account</button>
+      <h1>Predict Your Health Risks with AI</h1>
+      <p>Find Possible Health Issues Based on Symptoms in Seconds</p>
+      <button className="cta-button">Predict Now</button>
       <button className="google-signup">Sign Up with Google</button>
     </div>
   );
