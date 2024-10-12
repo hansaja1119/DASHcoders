@@ -330,6 +330,10 @@ dependencies = [
 	{org = "ballerinax", name = "mysql"}
 ]
 modules = [
-	{org = "hansaja", packageName = "backend", moduleName = "backend"}
+	{org = "hansaja", packageName = "backend", moduleName = "backend"},
+	{org = "hansaja", packageName = "backend", moduleName = "backend.db"},
+	{org = "hansaja", packageName = "backend", moduleName = "backend.disease"},
+	{org = "hansaja", packageName = "backend", moduleName = "backend.predict"},
+	{org = "hansaja", packageName = "backend", moduleName = "backend.types"}
 ]
 
