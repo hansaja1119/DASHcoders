@@ -1,21 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import './Navbar.scss';
+import profilepic from '../../Icons//profilepic.png'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <h2>Strides</h2>
+        <h2>ReMeD Predict</h2>
       </div>
       <ul className="nav-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#solution">Solution</a></li>
-        <li><a href="#plans">Plans</a></li>
-        <li><a href="#referrals">Referrals</a></li>
+         <li><Link to="/">Overview</Link></li>
+        <li><Link to="/search">Search</Link></li>
+        <li><Link to="/plans">Documents</Link></li>
+        <li><Link to="/referrals">Support</Link></li>
       </ul>
       <div className="user-profile">
-        <span className="user-name">Chloe Milagros</span>
-        <div className="user-icon"></div>
+        <span className="user-name">Hansaja</span>
+        <img src={profilepic} alt="User Profile" className="user-icon" />
+        
       </div>
     </nav>
   );

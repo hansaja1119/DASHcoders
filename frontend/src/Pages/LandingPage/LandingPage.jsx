@@ -1,10 +1,17 @@
 import React from 'react';
 import './LandingPage.scss';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const handlePredictNowClick = () => {
+    navigate('/search');
+  };
+
   return (
     <div className="landing-page">
-      <div className="plans">
+      <div className="left">
         <div className="plan-item">
           <p>UnitedHealthcare</p>
           <p>77% Plan Match for BloomTech</p>
@@ -13,6 +20,18 @@ const LandingPage = () => {
           <p>Humana</p>
           <p>72% Plan Match for BloomTech</p>
         </div>
+      </div>
+
+      <div className="middle">
+        <h1>Predict Your Health Risks with AI</h1>
+        <p>Find Possible Health Issues Based on Symptoms in Seconds</p>
+        <button className="cta-button" onClick={handlePredictNowClick}>
+          Predict Now
+        </button>
+        <button className="google-signup">Sign Up with Google</button>
+      </div>
+
+      <div className="right">
         <div className="plan-item">
           <p>Aetna</p>
           <p>82% Plan Match for BloomTech</p>
@@ -22,12 +41,8 @@ const LandingPage = () => {
           <p>91% Plan Match for BloomTech</p>
         </div>
       </div>
-      <h1>Explore Modern Health Plans with AI Solutions</h1>
-      <p>Use AI to find and manage the best health coverage for your business needs and budget.</p>
-      <button className="cta-button">Activate Your Account</button>
-      <button className="google-signup">Sign Up with Google</button>
     </div>
   );
-}
+};
 
 export default LandingPage;
