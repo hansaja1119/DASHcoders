@@ -25,10 +25,12 @@ const LandingPage = () => {
       <div className="middle">
         <h1>Predict Your Health Risks with AI</h1>
         <p>Find Possible Health Issues Based on Symptoms in Seconds</p>
+        <div className='buttons'>
         <button className="cta-button" onClick={handlePredictNowClick}>
           Predict Now
         </button>
-        <button className="google-signup">Sign Up with Google</button>
+        <button className="google-signup">Sign Up with <br />Google</button>
+        </div>
       </div>
 
       <div className="right">
