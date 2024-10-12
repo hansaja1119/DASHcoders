@@ -4,7 +4,7 @@ import backend.types;
 import ballerina/http;
 import ballerina/sql;
 
-public function getDescription(string Disease) returns types:Disease_description|http:NotFound|http:InternalServerError {
+public isolated function getDescription(string Disease) returns types:Disease_description|http:NotFound|http:InternalServerError {
     types:Disease_description|sql:Error disease_description = db:selectDiseaseDescription(Disease);
 
     if disease_description is types:Disease_description {

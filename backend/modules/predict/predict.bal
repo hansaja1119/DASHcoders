@@ -1,35 +1,46 @@
+import backend.db;
+
+import ballerina/http;
 import ballerina/io;
 import ballerina/os;
+import ballerina/sql;
 
-public function predictDisease(string Symptoms) returns string|error? {
+public function predictDisease(string[] Symptoms) returns string|http:InternalServerError|http:NotFound {
     string|error result = getPreditedDisease(Symptoms);
-    // io:println("Current Working Directory: ", os:getCurrentDir);
 
     if (result is string) {
         io:println("Python Script Output: ", result);
+        string|sql:Error disease = db:selectDisease(result);
+
+        if disease is string {
+            return disease;
+        }
+        if (disease is sql:NoRowsError) {
+            return <http:NotFound>{body: {message: "Diease not found"}};
+        }
     } else {
         io:println("Error executing Python script: ", result);
     }
-    return result;
+    return <http:InternalServerError>{body: {message: "Error occurred while predicting"}};
 }
 
-function getPreditedDisease(string inputData) returns string|error {
+function getPreditedDisease(string[] inputData) returns string|error {
     string filepath = "resources/main.py";
+
+    // Convert the int array to a comma-separated string
+    string inputDataStr = string:'join(",", ...inputData);
 
     // Define the command and arguments to execute the Python script
     os:Process result = check os:exec({
         value: "python",
-        arguments: [filepath, inputData]
+        arguments: [filepath, inputDataStr]
     });
 
     int status = check result.waitForExit();
     io:println(string `Process exit with status: ${status}`);
 
-    byte[]|os:Error err = result.output(io:stderr);
-    if (err is os:Error) {
-        return err;
-    }
-    string output = check 'string:fromBytes(err);
+    byte[] outputBytes = check result.output();
+    string output = check 'string:fromBytes(outputBytes);
 
     return output;
 }

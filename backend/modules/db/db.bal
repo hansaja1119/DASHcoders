@@ -19,6 +19,11 @@ final mysql:Client dbClient = check new (
     options = connectionOptions
 );
 
+public isolated function selectDisease(string dieaseID) returns string|sql:Error {
+    sql:ParameterizedQuery selectQuery = `SELECT name FROM disease WHERE id = ${dieaseID}`;
+    return dbClient->queryRow(selectQuery);
+}
+
 public isolated function selectDiseaseDescription(string diease) returns types:Disease_description|sql:Error {
     sql:ParameterizedQuery selectQuery = `SELECT * FROM disease_description WHERE Disease = ${diease}`;
     return dbClient->queryRow(selectQuery);
