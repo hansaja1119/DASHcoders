@@ -1,7 +1,8 @@
 import React from 'react';
 import './LandingPage.scss';
 import { useNavigate } from 'react-router-dom';
-import company from '../../Icons/company.avif'
+import google from '../../Icons/Google.webp'
+import company from '../../Icons/company.avif';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -36,7 +37,12 @@ const LandingPage = () => {
         <button className="cta-button" onClick={handlePredictNowClick}>
           Predict Now
         </button>
-        <button className="google-signup">Sign Up with <br />Google</button>
+        <button className="google-signup">
+          <div className='google-button'>
+            <img src={google} alt="google" className='google' />
+          Sign Up with Google
+          </div>
+          </button>
         </div>
       </div>
 

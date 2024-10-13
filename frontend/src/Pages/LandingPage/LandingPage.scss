@@ -56,6 +56,18 @@
   flex-shrink: 0;
 }
 
+.google-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google{
+  width: 25px;
+  height: 25px;
+  
+}
+
 .plan-item .detail {
   background-color: #00000071;
   padding: 20px 10px; /* Reduce padding inside the detail section */
@@ -128,19 +140,23 @@ p {
   border-radius: 5px;
   margin: 10px;
   width: 150px;
+  height: 70px;
+  
 }
 
 .cta-button {
   background-color: #1b4ebb;
   color: white;
   width: 139.82;
-  height: 66.8px;
+  
 }
 
 
 .google-signup {
   background-color: white;
-  color: #2563eb;
+  color: #4b4e54;
+  font-size: 14px;
+  text-align: left;
 }
 
 
