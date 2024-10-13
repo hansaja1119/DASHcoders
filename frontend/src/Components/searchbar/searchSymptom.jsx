@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { Symptoms } from "./symptoms";
 import "./searchSymptom.css";
 import apiRequest from "../../lib/apiRequest";
 
@@ -7,6 +6,7 @@ function SearchSymptoms() {
   const [query, setQuery] = useState("");
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [symp, setSymp] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSelectSymptom = (symptom) => {
     if (selectedSymptoms.includes(symptom)) {
@@ -16,8 +16,24 @@ function SearchSymptoms() {
     }
   };
 
-  const findDisease = () => {
-    alert(`Selected symptoms: ${selectedSymptoms.join(", ")}`);
+  const findDisease = async () => {
+    // alert(`Selected symptoms: ${selectedSymptoms.join(", ")}`);
+    const sympList = selectedSymptoms.join(",");
+    console.log(sympList);
+
+    try {
+      const res = await apiRequest.post("/predict", sympList, {
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      });
+      console.log(res.data);
+      alert(`Predicted Disease: ${res.data}`);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const highlightText = (text, query) => {
@@ -65,9 +81,12 @@ function SearchSymptoms() {
               className={`listItem ${
                 selectedSymptoms.includes(symptom.name) ? "selected" : ""
               }`}
-              onClick={() => handleSelectSymptom(symptom.name)}
+              onClick={() => handleSelectSymptom(symptom.id)}
             >
-              {highlightText(symptom.name, query)}
+              {highlightText(
+                symptom.name.charAt(0).toUpperCase() + symptom.name.slice(1),
+                query
+              )}
             </li>
           ))}
       </ul>
@@ -77,14 +96,21 @@ function SearchSymptoms() {
           <h3>Selected Symptoms:</h3>
           <ul>
             {selectedSymptoms.map((symptom, index) => (
-              <li key={index}>{symptom}</li>
+              <li key={index}>
+                {symp[symptom].name.charAt(0).toUpperCase() +
+                  symp[symptom].name.slice(1)}
+              </li>
             ))}
           </ul>
         </div>
       )}
 
       {selectedSymptoms.length > 0 && (
-        <button className="findDiseaseButton" onClick={findDisease}>
+        <button
+          className="findDiseaseButton"
+          onClick={findDisease}
+          disabled={isLoading}
+        >
           Find My Disease
         </button>
       )}

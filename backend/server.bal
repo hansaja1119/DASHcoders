@@ -20,7 +20,7 @@ import ballerina/http;
 
 service /api on new http:Listener(9090) {
 
-    resource function post predict(@http:Payload string[] Symptoms) returns string|http:InternalServerError|http:NotFound {
+    resource function post predict(@http:Payload string Symptoms) returns string|http:InternalServerError|http:NotFound {
         return predict:predictDisease(Symptoms);
     };
 
