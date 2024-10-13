@@ -7,6 +7,7 @@ import DetailPage from './Pages/DetailPage/DetailPage.jsx';
 import DocumentPage from './Pages/DocumentPage/DocumentPage.jsx';
 import SupportPage from './Pages/SupportPage/SupportPage.jsx';
 import Footer from './Components/Footer/Footer.jsx';
+import './App.css'
 
 
 const App = () => {
