@@ -1,7 +1,9 @@
 import backend.db;
+import backend.types;
 
 import ballerina/http;
 import ballerina/io;
+import ballerina/log;
 import ballerina/os;
 import ballerina/sql;
 
@@ -24,7 +26,26 @@ public function predictDisease(string[] Symptoms) returns string|http:InternalSe
     return <http:InternalServerError>{body: {message: "Error occurred while predicting"}};
 }
 
+public isolated function getSymptoms() returns types:Symptoms[]|http:NotFound|http:InternalServerError {
+    types:Symptoms[]|sql:Error symptomList = db:getSymptoms();
+
+    if symptomList is types:Symptoms[] {
+        return symptomList;
+    }
+    if (symptomList is sql:NoRowsError) {
+        return <http:NotFound>{body: {message: "Symptoms not found"}};
+    }
+
+    // Log the error to get more details.
+    if (symptomList is sql:Error) {
+        log:printError("Error while retrieving symptoms from database", symptomList);
+    }
+
+    return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
+}
+
 function getPreditedDisease(string[] inputData) returns string|error {
+    // paths are accessing from root directory
     string filepath = "resources/main.py";
 
     // Convert the int array to a comma-separated string
@@ -32,9 +53,9 @@ function getPreditedDisease(string[] inputData) returns string|error {
 
     // Define the command and arguments to execute the Python script
     os:Process result = check os:exec({
-        value: "python",
-        arguments: [filepath, inputDataStr]
-    });
+                                          value: "python",
+                                          arguments: [filepath, inputDataStr]
+                                      });
 
     int status = check result.waitForExit();
     io:println(string `Process exit with status: ${status}`);
