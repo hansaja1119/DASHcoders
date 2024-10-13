@@ -31,12 +31,16 @@ service /api on new http:Listener(9090) {
         return db:getSymptompsCount();
     };
 
+    isolated resource function get workout/[string Workout]() returns types:Workout[]|error {
+        return db:selectWorkouts(Workout);
+    };
+
     isolated resource function get description/[string Disease]() returns types:Disease_description|http:NotFound|http:InternalServerError {
         return disease:getDescription(Disease);
     };
 
-    isolated resource function get workout/[string Disease]() returns types:Workout[]|error {
-        return db:selectWorkouts(Disease);
+    isolated resource function get symptoms() returns types:Symptoms[]|http:NotFound|http:InternalServerError {
+        return predict:getSymptoms();
     };
 }
 
