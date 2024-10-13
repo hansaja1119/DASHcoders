@@ -10,12 +10,13 @@ import ballerina/http;
 
 // import ballerina/sql;
 
-// @http:ServiceConfig {
-//     cors: {
-//         allowOrigins: ["http://localhost:3000"],
-//         allowMethods: ["GET", "POST", "OPTIONS"]
-//     }
-// }
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://localhost:3000"],
+        allowCredentials: true,
+        allowMethods: ["GET", "POST", "OPTIONS"]
+    }
+}
 
 service /api on new http:Listener(9090) {
 

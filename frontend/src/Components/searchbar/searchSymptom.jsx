@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Symptoms } from "./symptoms";
+import React, { useEffect, useState } from "react";
+// import { Symptoms } from "./symptoms";
 import "./searchSymptom.css";
+import apiRequest from "../../lib/apiRequest";
 
 function SearchSymptoms() {
   const [query, setQuery] = useState("");
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
+  const [symp, setSymp] = useState([]);
 
   const handleSelectSymptom = (symptom) => {
     if (selectedSymptoms.includes(symptom)) {
@@ -33,6 +35,19 @@ function SearchSymptoms() {
     );
   };
 
+  useEffect(() => {
+    apiRequest
+      .get("/symptoms")
+      .then((res) => {
+        setSymp(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  //   console.log(symp);
+
   return (
     <div className="searchSymptoms">
       <input
@@ -42,19 +57,19 @@ function SearchSymptoms() {
         onChange={(e) => setQuery(e.target.value)}
       />
       <ul className="list">
-        {Symptoms.filter((symptom) =>
-          symptom.symptom_name.toLowerCase().includes(query)
-        ).map((symptom) => (
-          <li
-            key={symptom.id}
-            className={`listItem ${
-              selectedSymptoms.includes(symptom.symptom_name) ? "selected" : ""
-            }`}
-            onClick={() => handleSelectSymptom(symptom.symptom_name)}
-          >
-            {highlightText(symptom.symptom_name, query)}
-          </li>
-        ))}
+        {symp
+          .filter((symptom) => symptom.name.toLowerCase().includes(query))
+          .map((symptom) => (
+            <li
+              key={symptom.id}
+              className={`listItem ${
+                selectedSymptoms.includes(symptom.name) ? "selected" : ""
+              }`}
+              onClick={() => handleSelectSymptom(symptom.name)}
+            >
+              {highlightText(symptom.name, query)}
+            </li>
+          ))}
       </ul>
 
       {selectedSymptoms.length > 0 && (
