@@ -1,7 +1,11 @@
 .landing-page {
-  background: 
-      linear-gradient(90deg, rgba(32, 43, 150, 0.9) 5%, rgba(96, 165, 250, 0.9) 50%, rgba(32, 43, 150, 0.9) 95%), 
-      url(../../Icons/background.png);
+  background: linear-gradient(
+      90deg,
+      rgba(32, 43, 150, 0.9) 5%,
+      rgba(96, 165, 250, 0.9) 50%,
+      rgba(32, 43, 150, 0.9) 95%
+    ),
+    url(../../Icons/background.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,12 +14,11 @@
   color: white;
   display: flex;
   gap: 20px;
-  height: 50vh;
+  min-height: 40vh;
 }
 
-
-
-.left, .right {
+.left,
+.right {
   // margin: 10px 0px;
   flex: 1;
   display: flex;
@@ -24,45 +27,39 @@
   align-items: stretch;
   max-width: 50%;
   gap: 50px;
-  
-    
 }
 
-  .plan-item {
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    font-size: 14px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 10px;
-    box-sizing: border-box;
-    min-height: 120px;
-    border-radius: 30px;
-  }
-
-
-
+.plan-item {
+  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  font-size: 14px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 120px;
+  border-radius: 30px;
+}
 
 .Topic {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   background: transparent;
   color: white;
-  text-align: center; 
-  flex: 4; 
+  text-align: center;
+  flex: 4;
 }
 
 h1 {
   font-size: 48px;
-  
 }
 
 p {
   font-size: 18px;
-  
 }
 
-.cta-button, .google-signup {
+.cta-button,
+.google-signup {
   padding: 15px 25px;
   border: none;
   font-size: 16px;

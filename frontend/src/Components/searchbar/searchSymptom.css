@@ -1,113 +1,108 @@
 .searchSymptoms {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; 
-    width: 200%;   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  width: 200%;
 }
 
 .search {
-    width: 100%;         
-    max-width: 1200px;  
-    padding: 20px; 
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    font-size: 18px;
-    color: #333;
-    outline: none;
-    transition: border 0.3s ease;
-    margin-bottom: 20px;
-    background-color: #e1ebff;
+  width: 100%;
+  max-width: 768px;
+  padding: 20px;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 18px;
+  color: #333;
+  outline: none;
+  transition: border 0.3s ease;
+  margin-bottom: 20px;
+  background-color: #e1ebff;
 }
 
 .search:focus {
-    border-color: #888;
+  border-color: #888;
 }
 
 .highlight {
-    background-color: rgb(255, 255, 123); 
-    font-weight: bold; 
+  background-color: rgb(255, 255, 123);
+  font-weight: bold;
 }
 
-
 .list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0; 
-    width: 95%; 
-    max-width: 900px; 
-    max-height: 300px;
-    overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 95%;
+  max-width: 798px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .listItem {
-    padding: 20px; 
-    border-bottom: 1px solid #ddd;
-    background-color: white;
-    color: #333;
-    background-color: #e1ebff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  background-color: #e1ebff;
 }
 
 .listItem:hover {
-    background-color: #acc9ff;
-    cursor: pointer;
+  background-color: #acc9ff;
+  cursor: pointer;
 }
 
 .selected {
-    background-color: #b9d0ff;
-    color: #202b96;
+  background-color: #b9d0ff;
+  color: #202b96;
 }
 
 .selectedSymptoms {
-    margin-top: 20px;
-    font-size: 18px;
-    width: 80%;
-    background-color: #e1ebff; 
-    padding: 15px; 
-    border-radius: 5px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  font-size: 18px;
+  width: 80%;
+  max-width: 658px;
+  background-color: #e1ebff;
+  padding: 15px;
+  border-radius: 5px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .selectedSymptoms h3 {
-    margin-bottom: 10px; 
-    color: #333; 
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .selectedSymptoms ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .selectedSymptoms li {
-    padding: 10px; 
-    border: 1px solid #adadad;
-    border-radius: 4px; 
-    margin: 5px 0; 
-    transition: background-color 0.3s ease, transform 0.2s; 
+  padding: 10px;
+  border: 1px solid #adadad;
+  border-radius: 4px;
+  margin: 5px 0;
+  transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .findDiseaseButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #202b96;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s; 
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #202b96;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .findDiseaseButton:hover {
-    background-color: #3847d3;
-    transform: scale(1.05); 
+  background-color: #3847d3;
+  transform: scale(1.05);
 }
-
-
-
-
-
-  
