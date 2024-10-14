@@ -1,4 +1,3 @@
-import backend.db;
 import backend.disease;
 import backend.predict;
 import backend.types;
@@ -10,37 +9,43 @@ import ballerina/http;
 
 // import ballerina/sql;
 
-// @http:ServiceConfig {
-//     cors: {
-//         allowOrigins: ["http://localhost:3000"],
-//         allowMethods: ["GET", "POST", "OPTIONS"]
-//     }
-// }
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://localhost:3000"],
+        allowCredentials: true,
+        allowMethods: ["GET", "POST", "OPTIONS"]
+    }
+}
 
 service /api on new http:Listener(9090) {
 
-    resource function post predict(@http:Payload string[] Symptoms) returns string|http:InternalServerError|http:NotFound {
+    isolated resource function get symptoms() returns types:Symptoms[]|http:NotFound|http:InternalServerError {
+        return predict:getSymptoms();
+    };
+
+    resource function post predict(@http:Payload string Symptoms) returns string|http:InternalServerError|http:NotFound {
         return predict:predictDisease(Symptoms);
     };
 
-    isolated resource function get medicines/[string Disease]() returns types:Disease_medication[]|error {
-        return db:selectMedicine(Disease);
+    isolated resource function get medicines/[string Disease]() returns types:Disease_medication[]|http:NotFound|http:InternalServerError {
+        return disease:getMedicines(Disease);
     };
 
-    isolated resource function get symptomCount() returns string|error {
-        return db:getSymptompsCount();
+    isolated resource function get workout/[string Disease]() returns types:Workout[]|http:NotFound|http:InternalServerError {
+        return disease:getWorkouts(Disease);
     };
 
-    isolated resource function get workout/[string Workout]() returns types:Workout[]|error {
-        return db:selectWorkouts(Workout);
+    isolated resource function get precaution/[string Disease]() returns types:Precaution[]|http:NotFound|http:InternalServerError {
+        return disease:getPrecaution(Disease);
+    };
+
+    isolated resource function get diets/[string Disease]() returns types:Diet[]|http:NotFound|http:InternalServerError {
+        return disease:getDiets(Disease);
     };
 
     isolated resource function get description/[string Disease]() returns types:Disease_description|http:NotFound|http:InternalServerError {
         return disease:getDescription(Disease);
     };
 
-    isolated resource function get symptoms() returns types:Symptoms[]|http:NotFound|http:InternalServerError {
-        return predict:getSymptoms();
-    };
 }
 

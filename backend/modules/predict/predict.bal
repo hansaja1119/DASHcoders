@@ -7,7 +7,7 @@ import ballerina/log;
 import ballerina/os;
 import ballerina/sql;
 
-public function predictDisease(string[] Symptoms) returns string|http:InternalServerError|http:NotFound {
+public function predictDisease(string Symptoms) returns string|http:InternalServerError|http:NotFound {
     string|error result = getPreditedDisease(Symptoms);
 
     if (result is string) {
@@ -44,17 +44,17 @@ public isolated function getSymptoms() returns types:Symptoms[]|http:NotFound|ht
     return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
 }
 
-function getPreditedDisease(string[] inputData) returns string|error {
+function getPreditedDisease(string inputData) returns string|error {
     // paths are accessing from root directory
     string filepath = "resources/main.py";
 
     // Convert the int array to a comma-separated string
-    string inputDataStr = string:'join(",", ...inputData);
+    // string inputDataStr = string:'join(",", ...inputData);
 
     // Define the command and arguments to execute the Python script
     os:Process result = check os:exec({
                                           value: "python",
-                                          arguments: [filepath, inputDataStr]
+                                          arguments: [filepath, inputData]
                                       });
 
     int status = check result.waitForExit();

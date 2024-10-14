@@ -15,3 +15,67 @@ public isolated function getDescription(string Disease) returns types:Disease_de
     }
     return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
 }
+
+public isolated function getPrecaution(string Disease) returns types:Precaution[]|http:NotFound|http:InternalServerError {
+    types:Precaution[]|sql:Error disease_precaution = db:selectPrecaution(Disease);
+
+    // Check if the result is an array and if it's empty
+    if (disease_precaution is types:Precaution[]) {
+        if (disease_precaution.length() == 0) {
+            return <http:NotFound>{body: {message: "Precautions not found"}};
+        }
+        return disease_precaution;
+    }
+
+    if (disease_precaution is sql:Error) {
+        return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
+    }
+}
+
+public isolated function getWorkouts(string Disease) returns types:Workout[]|http:NotFound|http:InternalServerError {
+    types:Workout[]|sql:Error workouts = db:selectWorkouts(Disease);
+
+    // Check if the result is an array and if it's empty
+    if (workouts is types:Workout[]) {
+        if (workouts.length() == 0) {
+            return <http:NotFound>{body: {message: "Workouts not found"}};
+        }
+        return workouts;
+    }
+
+    if (workouts is sql:Error) {
+        return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
+    }
+}
+
+public isolated function getMedicines(string Disease) returns types:Disease_medication[]|http:NotFound|http:InternalServerError {
+    types:Disease_medication[]|sql:Error medications = db:selectMedicine(Disease);
+
+    // Check if the result is an array and if it's empty
+    if (medications is types:Disease_medication[]) {
+        if (medications.length() == 0) {
+            return <http:NotFound>{body: {message: "Medications not found"}};
+        }
+        return medications;
+    }
+
+    if (medications is sql:Error) {
+        return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
+    }
+}
+
+public isolated function getDiets(string Disease) returns types:Diet[]|http:NotFound|http:InternalServerError {
+    types:Diet[]|sql:Error diets = db:selectDiet(Disease);
+
+    // Check if the result is an array and if it's empty
+    if (diets is types:Diet[]) {
+        if (diets.length() == 0) {
+            return <http:NotFound>{body: {message: "Diets not found"}};
+        }
+        return diets;
+    }
+
+    if (diets is sql:Error) {
+        return <http:InternalServerError>{body: {message: "Error occurred while retrieving the data"}};
+    }
+}
