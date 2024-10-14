@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./searchSymptom.css";
 import apiRequest from "../../lib/apiRequest";
+import { useNavigate } from "react-router-dom";
 
 function SearchSymptoms() {
   const [query, setQuery] = useState("");
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [symp, setSymp] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSelectSymptom = (symptom) => {
     if (selectedSymptoms.includes(symptom)) {
@@ -30,7 +32,8 @@ function SearchSymptoms() {
         },
       });
       console.log(res.data);
-      alert(`Predicted Disease: ${res.data}`);
+      // alert(`Predicted Disease: ${res.data}`);
+      navigate("/detail", { state: { selectedSymptoms } });
     } catch (err) {
       console.error(err);
     } finally {
