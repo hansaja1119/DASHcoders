@@ -1,7 +1,11 @@
 .landing-page {
-  background: 
-      linear-gradient(90deg, rgba(32, 43, 150, 0.9) 5%, rgba(96, 165, 250, 0.9) 50%, rgba(32, 43, 150, 0.9) 95%), 
-      url(../../Icons/background.png);
+  background: linear-gradient(
+      90deg,
+      rgba(32, 43, 150, 0.9) 5%,
+      rgba(96, 165, 250, 0.9) 50%,
+      rgba(32, 43, 150, 0.9) 95%
+    ),
+    url(../../Icons/background.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,11 +15,12 @@
   display: flex;
   // gap: 20px;
   height: 50vh;
+  // min-height: 40vh;
+
 }
 
-
-
-.left, .right {
+.left,
+.right {
   // margin: 10px 0px;
   flex: 1;
   display: flex;
@@ -24,8 +29,6 @@
   align-items: center;
   max-width: 50%;
   gap: 50px;
-  
-    
 }
 
 .plan-item {
@@ -111,16 +114,11 @@
     color: transparent; /* Fallback color for unsupported browsers */
     // text-shadow:25px 25px 15px #000000 ;
   }
-
 }
 
 h1 {
-  font-size: 48px;
-  
-  
+  font-size: 48px;  
 }
-
-
 
 .buttons{
   margin-top: 50px;
@@ -129,7 +127,8 @@ h1 {
   justify-content: center;
 }
 
-.cta-button, .google-signup {
+.cta-button,
+.google-signup {
   padding: 15px 25px;
   border: none;
   font-size: 16px;
