@@ -41,6 +41,7 @@ $ git clone https://github.com/hansaja1119/DASHcoders.git
 2. Add a new file named `Config.toml` in the `/backend` directory and add the following configurations for the MySQL server.
 
 ```
+[backend.db]
 host = "<Database Host>"
 port = <Database Port>
 user = <Username of MySQL user>

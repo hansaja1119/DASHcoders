@@ -60,7 +60,7 @@
 }
 
 .info-paragraph {
-  background: rgba(255, 255, 255, 0.8);
+  background: #acc9ff;
   /* Light background with better contrast */
   font-size: 1.5rem; /* Larger font size for the main content */
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
