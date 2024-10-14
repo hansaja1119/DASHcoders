@@ -18,6 +18,8 @@ function SearchSymptoms() {
 
   const findDisease = async () => {
     // alert(`Selected symptoms: ${selectedSymptoms.join(", ")}`);
+    setIsLoading(true);
+
     const sympList = selectedSymptoms.join(",");
     console.log(sympList);
 
@@ -79,7 +81,7 @@ function SearchSymptoms() {
             <li
               key={symptom.id}
               className={`listItem ${
-                selectedSymptoms.includes(symptom.name) ? "selected" : ""
+                selectedSymptoms.includes(symptom.id) ? "selected" : ""
               }`}
               onClick={() => handleSelectSymptom(symptom.id)}
             >
@@ -111,7 +113,7 @@ function SearchSymptoms() {
           onClick={findDisease}
           disabled={isLoading}
         >
-          Find My Disease
+          Predict My Disease
         </button>
       )}
     </div>

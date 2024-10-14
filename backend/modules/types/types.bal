@@ -13,6 +13,16 @@ public type Workout record {|
     string Workout;
 |};
 
+public type Precaution record {|
+    readonly string Disease;
+    string Precaution;
+|};
+
+public type Diet record {|
+    readonly string Disease;
+    string Diet;
+|};
+
 # these field names must be match with db table coloumn names
 # + id - symptom id  
 # + name - symptom name

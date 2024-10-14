@@ -29,18 +29,32 @@ public isolated function selectDiseaseDescription(string diease) returns types:D
     return dbClient->queryRow(selectQuery);
 }
 
-public isolated function selectMedicine(string diease) returns types:Disease_medication[]|error {
+public isolated function selectMedicine(string diease) returns types:Disease_medication[]|sql:Error {
     sql:ParameterizedQuery selectQuery = `SELECT Disease, Medication FROM Disease_medication WHERE Disease = ${diease} `;
-    stream<types:Disease_medication, error?> medicationStream = dbClient->query(selectQuery);
+    stream<types:Disease_medication, sql:Error?> medicationStream = dbClient->query(selectQuery);
     return from types:Disease_medication med in medicationStream
         select med;
 }
 
-public isolated function selectWorkouts(string diease) returns types:Workout[]|error {
+public isolated function selectWorkouts(string diease) returns types:Workout[]|sql:Error {
     sql:ParameterizedQuery selectQuery = `SELECT * FROM workout WHERE Disease = ${diease}`;
-    stream<types:Workout, error?> workoutStream = dbClient->query(selectQuery);
-    return from types:Workout med in workoutStream
-        select med;
+    stream<types:Workout, sql:Error?> workoutStream = dbClient->query(selectQuery);
+    return from types:Workout work in workoutStream
+        select work;
+}
+
+public isolated function selectPrecaution(string diease) returns types:Precaution[]|sql:Error {
+    sql:ParameterizedQuery selectQuery = `SELECT * FROM disease_precaution WHERE Disease = ${diease}`;
+    stream<types:Precaution, sql:Error?> precautionStream = dbClient->query(selectQuery);
+    return from types:Precaution pre in precautionStream
+        select pre;
+}
+
+public isolated function selectDiet(string diease) returns types:Diet[]|sql:Error {
+    sql:ParameterizedQuery selectQuery = `SELECT * FROM diet WHERE Disease = ${diease}`;
+    stream<types:Diet, sql:Error?> dietStream = dbClient->query(selectQuery);
+    return from types:Diet diet in dietStream
+        select diet;
 }
 
 public isolated function getSymptompsCount() returns string|sql:Error {
