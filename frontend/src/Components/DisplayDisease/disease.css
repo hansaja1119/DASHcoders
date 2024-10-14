@@ -1,0 +1,50 @@
+.info-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+    text-align: center;
+  }
+  
+  .page-title {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    font-size: 2.5rem;
+  }
+  
+  .button-container { 
+    display: flex;
+    gap: 20px;
+  }
+  
+  .button-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #202b96;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .info-paragraph {
+    /*margin-top: 5px;
+    font-size: 1.2rem;
+    color: #333;*/
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    font-size: 14px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: 120px;
+    border-radius: 30px;
+  }
+  

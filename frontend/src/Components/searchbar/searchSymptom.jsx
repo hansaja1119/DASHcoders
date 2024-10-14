@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Symptoms } from "./symptoms";
 import "./searchSymptom.css";
+import { useNavigate } from "react-router-dom";
 
 function SearchSymptoms() {
   const [query, setQuery] = useState("");
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
+  const navigate = useNavigate();
 
   const handleSelectSymptom = (symptom) => {
     if (selectedSymptoms.includes(symptom)) {
@@ -15,7 +17,7 @@ function SearchSymptoms() {
   };
 
   const findDisease = () => {
-    alert(`Selected symptoms: ${selectedSymptoms.join(", ")}`);
+    navigate("/detail", { state: { selectedSymptoms } });
   };
 
   const highlightText = (text, query) => {
