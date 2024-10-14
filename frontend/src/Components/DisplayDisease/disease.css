@@ -1,50 +1,78 @@
 .info-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0px;
-    text-align: center;
-  }
-  
-  .page-title {
-    margin-top: 50px;
-    margin-bottom: 0px;
-    font-size: 2.5rem;
-  }
-  
-  .button-container { 
-    display: flex;
-    gap: 20px;
-  }
-  
-  .button-container button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #202b96;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-  }
-  
-  .button-container button:hover {
-    background-color: #0056b3;
-  }
-  
-  .info-paragraph {
-    /*margin-top: 5px;
-    font-size: 1.2rem;
-    color: #333;*/
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    font-size: 14px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    padding: 10px;
-    box-sizing: border-box;
-    min-height: 120px;
-    border-radius: 30px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Adding space between elements */
+  padding: 20px; /* Adding padding to the page */
+  text-align: center;
+  /* background-color: #f9f9f9; Light background for better contrast */
+}
+
+.page-title {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: 3rem; /* Larger font size for title */
+  font-weight: bold;
+  color: #202b96; /* Highlight page title color */
+}
+
+.subtitle {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.disease-name {
+  font-size: 2rem; /* Larger font for disease name */
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.disease-description {
+  font-size: 1.2rem; /* Increased font size for better readability */
+  color: #181717;
+  max-width: 800px;
+  line-height: 1.5; /* Better spacing between lines */
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px; /* Adding margin for better spacing */
+}
+
+.button-container button {
+  padding: 12px 24px; /* Increased padding for buttons */
+  font-size: 18px; /* Larger button text */
+  background-color: #202b96;
+  color: white;
+  border: none;
+  border-radius: 8px; /* Slightly larger border radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for buttons */
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.info-paragraph {
+  background: rgba(255, 255, 255, 0.8);
+  /* Light background with better contrast */
+  font-size: 1.5rem; /* Larger font size for the main content */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px; /* Limiting width for better readability */
+  box-sizing: border-box;
+  min-height: fit-content;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6; /* Improved line height */
+  text-align: left; /* Left-aligning text for better flow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for the info box */
+}

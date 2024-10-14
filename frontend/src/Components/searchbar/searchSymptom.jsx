@@ -19,11 +19,8 @@ function SearchSymptoms() {
   };
 
   const findDisease = async () => {
-    // alert(`Selected symptoms: ${selectedSymptoms.join(", ")}`);
     setIsLoading(true);
-
     const sympList = selectedSymptoms.join(",");
-    console.log(sympList);
 
     try {
       const res = await apiRequest.post("/predict", sympList, {
@@ -32,8 +29,7 @@ function SearchSymptoms() {
         },
       });
       console.log(res.data);
-      // alert(`Predicted Disease: ${res.data}`);
-      navigate("/detail", { state: { selectedSymptoms } });
+      navigate("/detail/" + res.data, { state: { selectedSymptoms } });
     } catch (err) {
       console.error(err);
     } finally {
@@ -66,8 +62,6 @@ function SearchSymptoms() {
         console.log(err);
       });
   }, []);
-
-  //   console.log(symp);
 
   return (
     <div className="searchSymptoms">
@@ -116,8 +110,14 @@ function SearchSymptoms() {
           onClick={findDisease}
           disabled={isLoading}
         >
-          Predict My Disease
+          {isLoading ? "Predicting..." : "Predict My Disease"}
         </button>
+      )}
+
+      {isLoading && (
+        <div className="loading-indicator">
+          <h2>Predicting, please wait...</h2>
+        </div>
       )}
     </div>
   );

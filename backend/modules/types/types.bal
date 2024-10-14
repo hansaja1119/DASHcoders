@@ -23,6 +23,15 @@ public type Diet record {|
     string Diet;
 |};
 
+public type Disease record {|
+    readonly string Diease;
+    Disease_description Description;
+    Disease_medication[] Medications;
+    Precaution[] Precautions;
+    Workout[] Workouts;
+    Diet[] Dietplans;
+|};
+
 # these field names must be match with db table coloumn names
 # + id - symptom id  
 # + name - symptom name

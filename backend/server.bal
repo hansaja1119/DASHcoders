@@ -27,6 +27,12 @@ service /api on new http:Listener(9090) {
         return predict:predictDisease(Symptoms);
     };
 
+    // created a master service, so without calling each sub service one by one at frontend now can i call this one only
+    isolated resource function get disease/[string Disease]() returns types:Disease|http:InternalServerError {
+        return disease:getDisease(Disease);
+    };
+
+    // sub services
     isolated resource function get medicines/[string Disease]() returns types:Disease_medication[]|http:NotFound|http:InternalServerError {
         return disease:getMedicines(Disease);
     };

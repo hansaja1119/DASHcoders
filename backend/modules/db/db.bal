@@ -57,11 +57,6 @@ public isolated function selectDiet(string diease) returns types:Diet[]|sql:Erro
         select diet;
 }
 
-public isolated function getSymptompsCount() returns string|sql:Error {
-    sql:ParameterizedQuery selectQuery = `SELECT count(id) FROM symptom`;
-    return dbClient->queryRow(selectQuery);
-}
-
 public isolated function getSymptoms() returns types:Symptoms[]|sql:Error {
     sql:ParameterizedQuery selectQuery = `SELECT id, name FROM symptom `;
     stream<types:Symptoms, sql:Error?> symptomStream = dbClient->query(selectQuery);
