@@ -1,1 +1,11 @@
-
+/* App.css or global.css */
+body {
+    background: linear-gradient(90deg, rgba(32, 43, 150, 1) 5%, rgba(96, 165, 250, 0.9) 50%, rgba(32, 43, 150, 1) 95%);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* This helps prevent horizontal scroll if needed */
+  }
+  

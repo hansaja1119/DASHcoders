@@ -1,11 +1,13 @@
 .footer {
-    background-color: #141c28;
-    padding: 40px 0;
+    background-color: #081225;
+    
     color: white;
     text-align: center;
-    // border-top-left-radius : 10px;
-    // border-top-right-radius : 10px;
     overflow : hidden;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
   
   .partners {
@@ -13,14 +15,22 @@
     justify-content: center;
     gap: 40px;
     margin-bottom: 30px;
+    background: linear-gradient(90deg, #131E33 5%, #0D172B 70%, #1B273B 95%);
+    padding: 20px 0;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
   }
   
   .partners img {
-    width: 100px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     opacity: 0.8;
   }
   
   .footer-info p {
     font-size: 24px;
   }
+
+  
   

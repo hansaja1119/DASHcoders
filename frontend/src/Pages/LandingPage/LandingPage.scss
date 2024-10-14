@@ -9,12 +9,14 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 150px 20px;
+  padding: 150px 5px;
   text-align: center;
   color: white;
   display: flex;
-  gap: 20px;
-  min-height: 40vh;
+  // gap: 20px;
+  height: 50vh;
+  // min-height: 40vh;
+
 }
 
 .left,
@@ -24,7 +26,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Distribute the plan items evenly */
-  align-items: stretch;
+  align-items: center;
   max-width: 50%;
   gap: 50px;
 }
@@ -32,30 +34,97 @@
 .plan-item {
   background: rgba(255, 255, 255, 0.1);
   width: 100%;
-  font-size: 14px;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  padding: 10px;
+  font-size: 12px; /* Make font size smaller */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   box-sizing: border-box;
-  min-height: 120px;
-  border-radius: 30px;
+  min-height: 40px; /* Reduce the height */
+  min-width: 200px;
+  max-width: 250px;
+  border-radius: 20px; /* Smaller border-radius for a more compact look */
+  display: flex;
+  align-items: center; /* Align content in the center */
+  // padding: 10px 15px; /* Reduce padding */
 }
 
-.Topic {
+.plan-item p {
+  font-size: 12px; /* Smaller font size inside the box */
+  margin: 0; /* Remove default margin for more compact text */
+}
+
+.plan-item .image {
+  padding: 10px; /* Reduce padding around the image */
+  width: 40px; /* Smaller image */
+  height: 40px; /* Keep image proportional */
+  border-radius: 50%; /* Keep the image round */
+  flex-shrink: 0;
+}
+
+.google-button{
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background: transparent;
+  gap: 1px;
+}
+
+.google{
+  width: 25px;
+  height: 25px;
+  
+}
+
+.plan-item .detail {
+  background-color: #00000071;
+  padding: 20px 10px; /* Reduce padding inside the detail section */
+  border-top-right-radius: 20px; /* Match border-radius to plan-item */
+  border-bottom-right-radius: 20px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+
+.Topic {
+  // display: flex;
+  // flex-direction: column;
+  align-items: center;
+  // justify-content:flex-start; 
+  // background: transparent;
   color: white;
-  text-align: center;
-  flex: 4;
+  text-align: center; 
+  // flex: 4; 
+  // max-height: 800px;
+  
+
+  p {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    text-shadow:2px 2px 5px #000000 ;
+  }
+
+  .gradient-text {
+    // font-size: 48px; /* Adjust the font size as needed */
+    // font-weight: bold; /* Optional: Make the text bold */
+     background-image: linear-gradient(to right, #e3add2,#e9dfcd, #abdcbc,#efecd8,#82d8ee,#abdcbc); /* Your gradient colors */
+    -webkit-background-clip: text; /* For Safari */
+    -webkit-text-fill-color: transparent; /* For Safari */
+    background-clip: text; /* Non-prefixed version for modern browsers */
+    color: transparent; /* Fallback color for unsupported browsers */
+    // text-shadow:25px 25px 15px #000000 ;
+  }
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 48px;  
 }
 
-p {
-  font-size: 18px;
+.buttons{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta-button,
@@ -66,14 +135,26 @@ p {
   cursor: pointer;
   border-radius: 5px;
   margin: 10px;
+  width: 150px;
+  height: 70px;
+  
 }
 
 .cta-button {
   background-color: #1b4ebb;
   color: white;
+  width: 139.82;
+  
 }
+
 
 .google-signup {
   background-color: white;
-  color: #2563eb;
+  color: #4b4e54;
+  font-size: 14px;
+  text-align: left;
+  text-align: center;
 }
+
+
+

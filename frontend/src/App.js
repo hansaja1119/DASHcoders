@@ -4,7 +4,10 @@ import Navbar from './Components/Navbar/Navbar.jsx';
 import LandingPage from './Pages/LandingPage/LandingPage.jsx';
 import SearchPage from './Pages/SearchPage/SearchPage.jsx';
 import DetailPage from './Pages/DetailPage/DetailPage.jsx';
+import DocumentPage from './Pages/DocumentPage/DocumentPage.jsx';
+import SupportPage from './Pages/SupportPage/SupportPage.jsx';
 import Footer from './Components/Footer/Footer.jsx';
+import './App.css'
 
 
 const App = () => {
@@ -15,6 +18,8 @@ const App = () => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/detail" element={<DetailPage />}/>
+      <Route path="/documents" element={<DocumentPage />}/>
+      <Route path="/support" element={<SupportPage />}/>
       </Routes>
       <Footer />
     </Router>
